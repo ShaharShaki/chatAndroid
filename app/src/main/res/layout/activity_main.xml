@@ -53,38 +53,17 @@
     </LinearLayout>
 
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/purple_500"
+        android:layout_weight="1"
         android:padding="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="20dp"
-            android:scaleX="2"
-            android:scaleY="2"
-            app:srcCompat="@drawable/ic_logo"
-            tools:layout_editor_absoluteX="150dp"
-            tools:layout_editor_absoluteY="591dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/chat_logo"
-            android:textColor="@color/white"
-            android:textSize="34sp" />
-
-    </LinearLayout>
+        android:scaleX="2"
+        android:scaleY="2"
+        app:srcCompat="@drawable/ic_logo"
+        tools:layout_editor_absoluteX="173dp"
+        tools:layout_editor_absoluteY="114dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         usernamesList = new ArrayList<String>();
         passwordsList = new ArrayList<String>();
 
+
         String username = findViewById(R.id.editTextTextPersonName).toString();
         String password = findViewById(R.id.editTextTextPassword).toString();
 
