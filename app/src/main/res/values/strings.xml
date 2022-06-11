@@ -12,4 +12,6 @@
     <string name="btnImg">Select Image</string>
     <string name="login_etPasswordValidation">Confirm password</string>
     <string name="BtnSave">Save</string>
+    <string name="BaseUrl">"https://localhost:10.0.2.2:7061/ "</string>
+
 </resources>

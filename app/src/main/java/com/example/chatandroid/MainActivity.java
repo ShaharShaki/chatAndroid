@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         usernamesList = new ArrayList<String>();
         passwordsList = new ArrayList<String>();
+        
+//        UserAPI userAPI = new UserAPI();
+//        UserAPI.get();
 
         String username = findViewById(R.id.editTextTextPersonName).toString();
         String password = findViewById(R.id.editTextTextPassword).toString();
