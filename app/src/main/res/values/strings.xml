@@ -10,4 +10,6 @@
     <string name="register_username">Username</string>
     <string name="btnsubmit">Submit</string>
     <string name="btnImg">Select Image</string>
+    <string name="login_etPasswordValidation">Confirm password</string>
+    <string name="BtnSave">Save</string>
 </resources>

@@ -7,7 +7,6 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,10 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         EditText username = findViewById(R.id.editTextTextPersonName);
         EditText password = findViewById(R.id.editTextTextPassword);
-        EditText password2 = findViewById(R.id.editTextTextPasswordValidation);
-
-        ListView lvUsers = findViewById(R.id.lvUsers);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, )
+        EditText password2 = findViewById(R.id.registerPasswordValidation);
 
         ImageView imgGallery = findViewById(R.id.imgGallery);
         Button btnGallery = findViewById(R.id.btnImg);

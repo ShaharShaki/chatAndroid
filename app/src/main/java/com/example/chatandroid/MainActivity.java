@@ -30,14 +30,8 @@ public class MainActivity extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(v -> {
-            Intent in = new Intent(this, ChatActivity.class);
-            for (int i = 0; i < usernamesList.size(); i++) {
-                if (usernamesList.get(i).equals(username) && passwordsList.get(i).equals(password)) {
+            Intent in = new Intent(this, ContactsListActivity.class);
                     startActivity(in);
-                }
-            }
-            //dd
-            popupMessage();
         });
 
         Button btnRegister = findViewById(R.id.btnRegister);
