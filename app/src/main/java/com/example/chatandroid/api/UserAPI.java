@@ -13,7 +13,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class  UserAPI {
+public class UserAPI {
     Retrofit retrofit;
     WebAPI webServiceAPI;
 
@@ -24,8 +24,9 @@ public class  UserAPI {
                 .build();
         webServiceAPI = retrofit.create(WebAPI.class);
     }
+
     public void get() {
-        Call<List<ContactUser>> call = webServiceAPI.getPosts("Erel");
+        Call<List<ContactUser>> call = webServiceAPI.getContacts("Erel");
         call.enqueue(new Callback<List<ContactUser>>() {
             @Override
             public void onResponse(Call<List<ContactUser>> call, Response<List<ContactUser>> response) {
@@ -33,7 +34,8 @@ public class  UserAPI {
             }
 
             @Override
-            public void onFailure(Call<List<ContactUser>> call, Throwable t) {}
+            public void onFailure(Call<List<ContactUser>> call, Throwable t) {
+            }
         });
     }
 
