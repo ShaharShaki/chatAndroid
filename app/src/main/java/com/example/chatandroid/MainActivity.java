@@ -23,11 +23,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        UserAPI userAPI = new UserAPI();
+        userAPI.get();
+
         usernamesList = new ArrayList<String>();
         passwordsList = new ArrayList<String>();
-        
-        UserAPI userAPI = new UserAPI();
-        UserAPI.get();
 
         String username = findViewById(R.id.editTextTextPersonName).toString();
         String password = findViewById(R.id.editTextTextPassword).toString();

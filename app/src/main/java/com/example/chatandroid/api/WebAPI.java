@@ -12,14 +12,13 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface WebAPI {
-    @GET("posts")
-    static Call<List<ContactUser>> getPosts() {
-        return null;
-    }
+
+    @GET("contacts")
+    Call<List<ContactUser>> getPosts();
 
     @POST("posts")
     Call<Void> createPost(@Body ContactUser post);
 
     @DELETE("posts/{id}")
     Call<Void> deletePost(@Path("id") int id);
-} 
+}
