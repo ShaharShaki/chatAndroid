@@ -13,5 +13,6 @@
     <string name="login_etPasswordValidation">Confirm password</string>
     <string name="BtnSave">Save</string>
     <string name="BaseUrl">"http://10.0.2.2:7061/ "</string>
+    <string name="textViewName">" "</string>
 
 </resources>

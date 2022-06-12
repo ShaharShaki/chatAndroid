@@ -58,16 +58,17 @@ public class ContactsListActivity extends AppCompatActivity {
 //        });
 
         myContactsListView.setOnItemClickListener((adapterView, view, i, l) ->{
+            String username=contactUsers.get(i).getContent().toString();
             Intent intent = new Intent(this, ChatActivity.class);
-//            Intent intent = new Intent(this, FormActivity.class);
-//            intent.putExtra("id", contactUsers.get(i).getId());
+            intent.putExtra("username",username);
             startActivity(intent);
         });
 
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         super.onResume();
         contactUsers.clear();
         contactUsers.addAll(contactUsersDao.index());

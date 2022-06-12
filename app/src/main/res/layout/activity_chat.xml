@@ -10,15 +10,18 @@
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="match_parent">-->
 
-    <Button
-        android:id="@+id/button"
+
+    <TextView
+        android:id="@+id/TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="this is chat page"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="10dp"
+        android:text="Im small"
+        android:layout_centerInParent="true"
+        android:fontFamily="serif-monospace"
+        android:textSize="36sp"
+        tools:ignore="MissingConstraints" />
+
 
     <EditText
         android:id="@+id/editTextItem"
