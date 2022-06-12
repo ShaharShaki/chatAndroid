@@ -10,11 +10,14 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface WebAPI {
 
     @GET("contacts")
-    Call<List<ContactUser>> getPosts();
+    Call<List<ContactUser>> getPosts(@Query("username") String username);
+
+
 
     @POST("posts")
     Call<Void> createPost(@Body ContactUser post);

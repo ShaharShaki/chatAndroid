@@ -24,9 +24,8 @@ public class  UserAPI {
                 .build();
         webServiceAPI = retrofit.create(WebAPI.class);
     }
-
     public void get() {
-        Call<List<ContactUser>> call = webServiceAPI.getPosts();
+        Call<List<ContactUser>> call = webServiceAPI.getPosts("Erel");
         call.enqueue(new Callback<List<ContactUser>>() {
             @Override
             public void onResponse(Call<List<ContactUser>> call, Response<List<ContactUser>> response) {

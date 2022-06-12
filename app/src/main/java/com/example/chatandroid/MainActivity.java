@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         passwordsList = new ArrayList<String>();
 
         String username = findViewById(R.id.editTextTextPersonName).toString();
+
         String password = findViewById(R.id.editTextTextPassword).toString();
 
         Button btnLogin = findViewById(R.id.btnLogin);
@@ -45,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
             Intent i2 = new Intent(this, RegisterActivity.class);
             startActivity(i2);
         });
+
+        Button btnSettings = findViewById(R.id.btnSettings);
+
 
     }
 
