@@ -9,6 +9,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.chatandroid.api.UserAPI;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         usernamesList = new ArrayList<String>();
         passwordsList = new ArrayList<String>();
         
-//        UserAPI userAPI = new UserAPI();
-//        UserAPI.get();
+        UserAPI userAPI = new UserAPI();
+        UserAPI.get();
 
         String username = findViewById(R.id.editTextTextPersonName).toString();
         String password = findViewById(R.id.editTextTextPassword).toString();

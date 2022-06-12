@@ -21,7 +21,7 @@ public class UserAPI {
     Retrofit retrofit;
     WebAPI webServiceAPI;
 
-    public void PostAPI() {
+    public UserAPI() {
 //        this.postListData = postListData;
 //        this.dao = dao;
 
