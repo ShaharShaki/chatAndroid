@@ -17,20 +17,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-//        db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "UsersDB")
-//                .allowMainThreadQueries()
-//                .build();
-//
-//        contactUsersDao = db.contactUsersDao();
-//
-//        editTextItem = findViewById(R.id.editTextItem);
-//
-//
-//        if (getIntent().getExtras() != null) {
-//            int id = getIntent().getExtras().getInt("id");
-//            contactUser = contactUsersDao.get(id);
-//            editTextItem.setText(contactUser.getContent());
-//        }
+
     }
 
 }
