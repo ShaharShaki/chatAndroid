@@ -58,7 +58,7 @@ public class ContactsListActivity extends AppCompatActivity {
 //        });
 
         myContactsListView.setOnItemClickListener((adapterView, view, i, l) ->{
-            String username=contactUsers.get(i).getContent().toString();
+            String username=contactUsers.get(i).getName().toString();
             Intent intent = new Intent(this, ChatActivity.class);
             intent.putExtra("username",username);
             startActivity(intent);

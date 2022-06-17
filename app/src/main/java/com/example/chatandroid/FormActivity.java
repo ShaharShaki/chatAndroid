@@ -30,17 +30,17 @@ public class FormActivity extends AppCompatActivity {
         if (getIntent().getExtras() != null) {
             int id = getIntent().getExtras().getInt("id");
             contactUser = contactUsersDao.get(id);
-            editTextItem.setText(contactUser.getContent());
+          //  editTextItem.setText(contactUser.getContent());
         }
 
         Button btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(v -> {
             if(contactUser != null) {
-                contactUser.setContent(editTextItem.getText().toString());
+            //    contactUser.setContent(editTextItem.getText().toString());
                 contactUsersDao.update(contactUser);
             }
             else {
-                ContactUser contactUser = new ContactUser(0, editTextItem.getText().toString());
+             //   ContactUser contactUser = new ContactUser(0, editTextItem.getText().toString());
                 contactUsersDao.insert(contactUser);
             }
 

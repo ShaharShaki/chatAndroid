@@ -15,7 +15,8 @@ import retrofit2.http.Query;
 public interface WebAPI {
 
     @GET("contacts")
-    Call<List<ContactUser>> getContacts(@Query("username") String username);
+    Call<List<ContactUser>> getContacts(@Query("id") String username);
+    //Call<List<ContactUser>> getPosts();
 
 
     @POST("posts")

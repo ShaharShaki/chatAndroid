@@ -27,6 +27,8 @@ public class UserAPI {
 
     public void get() {
         Call<List<ContactUser>> call = webServiceAPI.getContacts("Erel");
+      //  Call<List<ContactUser>> call = webServiceAPI.getPosts();
+
         call.enqueue(new Callback<List<ContactUser>>() {
             @Override
             public void onResponse(Call<List<ContactUser>> call, Response<List<ContactUser>> response) {
