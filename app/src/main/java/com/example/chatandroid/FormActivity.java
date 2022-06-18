@@ -9,7 +9,7 @@ import androidx.room.Room;
 
 public class FormActivity extends AppCompatActivity {
 
-    private AppDB db;
+    private contactDB db;
     private ContactUsersDao contactUsersDao;
     private EditText editTextItem;
     private ContactUser contactUser;
@@ -19,7 +19,7 @@ public class FormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "UsersDB")
+        db = Room.databaseBuilder(getApplicationContext(), contactDB.class, "UsersDB")
                 .allowMainThreadQueries()
                 .build();
 
@@ -28,19 +28,19 @@ public class FormActivity extends AppCompatActivity {
         editTextItem = findViewById(R.id.editTextItem);
 
         if (getIntent().getExtras() != null) {
-            int id = getIntent().getExtras().getInt("id");
-            contactUser = contactUsersDao.get(id);
-            editTextItem.setText(contactUser.getContent());
+            String id = getIntent().getExtras().getString("id");
+//            contactUser = contactUsersDao.get();
+          //  editTextItem.setText(contactUser.getContent());
         }
 
         Button btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(v -> {
             if(contactUser != null) {
-                contactUser.setContent(editTextItem.getText().toString());
+            //    contactUser.setContent(editTextItem.getText().toString());
                 contactUsersDao.update(contactUser);
             }
             else {
-                ContactUser contactUser = new ContactUser(0, editTextItem.getText().toString());
+             //   ContactUser contactUser = new ContactUser(0, editTextItem.getText().toString());
                 contactUsersDao.insert(contactUser);
             }
 

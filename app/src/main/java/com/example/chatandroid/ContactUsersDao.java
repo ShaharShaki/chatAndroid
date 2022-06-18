@@ -14,8 +14,8 @@ public interface ContactUsersDao {
     @Query("SELECT * FROM contactuser")
     List<ContactUser> index();
 
-    @Query("SELECT * FROM contactuser WHERE id = :id")
-    ContactUser get(int id);
+    @Query("SELECT * FROM contactuser WHERE currentUserLogin = :currentUserLogin")
+    List<ContactUser> get(String currentUserLogin);
 
     @Insert
     void insert(ContactUser... users);

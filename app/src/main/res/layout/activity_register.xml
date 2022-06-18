@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".RegisterActivity"
-    tools:ignore="ExtraText">
+    tools:ignore="ExtraText"
+    android:background="@drawable/login_background">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -87,12 +88,13 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/purple_500"
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.404"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.385">
 
 
         <ImageView
@@ -105,15 +107,17 @@
             android:scaleY="2"
             app:srcCompat="@drawable/ic_logo"
             tools:layout_editor_absoluteX="150dp"
-            tools:layout_editor_absoluteY="591dp" />
+            tools:layout_editor_absoluteY="172dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/chat_logo"
-            android:textColor="@color/white"
-            android:textSize="34sp" />
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            tools:layout_editor_absoluteX="205dp"
+            tools:layout_editor_absoluteY="178dp" />
 
     </LinearLayout>
 

@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.chatandroid.api.UserAPI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +24,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        UserAPI userAPI = new UserAPI();
+        userAPI.get();
+
         usernamesList = new ArrayList<String>();
         passwordsList = new ArrayList<String>();
 
-        String username = findViewById(R.id.editTextTextPersonName).toString();
+        EditText username = findViewById(R.id.editTextTextPersonName);
+
+
         String password = findViewById(R.id.editTextTextPassword).toString();
 
         Button btnLogin = findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(v -> {
             Intent in = new Intent(this, ContactsListActivity.class);
+                    in.putExtra("username", username.getText().toString());
                     startActivity(in);
         });
 
@@ -39,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
             Intent i2 = new Intent(this, RegisterActivity.class);
             startActivity(i2);
         });
+
+        Button btnSettings = findViewById(R.id.btnSettings);
+
 
     }
 
