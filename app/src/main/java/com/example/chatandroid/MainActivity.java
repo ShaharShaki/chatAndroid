@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         usernamesList = new ArrayList<String>();
         passwordsList = new ArrayList<String>();
 
-        String username = findViewById(R.id.editTextTextPersonName).toString();
+        EditText username = findViewById(R.id.editTextTextPersonName);
+
 
         String password = findViewById(R.id.editTextTextPassword).toString();
 
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener(v -> {
             Intent in = new Intent(this, ContactsListActivity.class);
+                    in.putExtra("username", username.getText().toString());
                     startActivity(in);
         });
 

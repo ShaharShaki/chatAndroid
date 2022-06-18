@@ -5,13 +5,16 @@
       <map>
         <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/drawable-anydpi/ic_add.xml" value="0.333" />
         <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/drawable-anydpi/ic_logo.xml" value="0.2095" />
+        <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/drawable/button.xml" value="0.1" />
         <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2095" />
-        <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/layout/activity_chat.xml" value="0.1" />
+        <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/drawable/login_background.xml" value="0.1" />
+        <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/layout/activity_chat.xml" value="0.136" />
         <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/layout/activity_chat2.xml" value="0.1774262505344164" />
         <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/layout/activity_contactslist.xml" value="0.1" />
-        <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/layout/activity_form.xml" value="0.176" />
-        <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/layout/activity_form.xml" value="0.14736842105263157" />
+        <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/shaha/AndroidStudioProjects/chatAndroid/app/src/main/res/layout/contactslist.xml" value="0.1" />
       </map>
     </option>
   </component>
