@@ -13,9 +13,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent">
 
+        <include layout="@layout/messageslayout">
+
+        </include>
+
 
         <TextView
-            android:id="@+id/TextView"
+            android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"

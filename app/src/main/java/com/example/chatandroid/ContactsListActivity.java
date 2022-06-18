@@ -12,13 +12,9 @@ import androidx.room.Room;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ContactsListActivity extends AppCompatActivity {
     private contactDB db;
-    private ContactUsersDao contactUsersDao;
-    private List<ContactUser> contactUsers;
-//    private ArrayAdapter<ContactUser> adapter;
     private ContactsListAdapter adapter;
     private ListView myContactsListView;
     private ArrayList<ContactUser> tempList = new ArrayList<>();
@@ -68,8 +64,6 @@ public class ContactsListActivity extends AppCompatActivity {
         });
 
         myContactsListView = findViewById(R.id.myContactsListView);
-//        adapter = new ArrayAdapter<>(this,
-//                android.R.layout.simple_list_item_1, dao.get(username1));
 
         adapter = new ContactsListAdapter(getApplicationContext(), contactsList);
 
@@ -87,9 +81,10 @@ public class ContactsListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
 
-                intent.putExtra("username", tempList.get(i).getName());
-                intent.putExtra("lastMessage", tempList.get(i).getLast());
-                intent.putExtra("time", tempList.get(i).getLastdate());
+                intent.putExtra("username", contactsList.get(i).getName());
+                intent.putExtra("username2", contactsList.get(i).getCurrentUserLogin());
+                intent.putExtra("lastMessage", contactsList.get(i).getLast());
+                intent.putExtra("time", contactsList.get(i).getLastdate());
 
                 startActivity(intent);
 
