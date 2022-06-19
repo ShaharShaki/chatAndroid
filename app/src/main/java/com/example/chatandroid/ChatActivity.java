@@ -14,7 +14,9 @@ public class ChatActivity extends AppCompatActivity {
 
     private messagesDB db;
     private messagesDao dao;
-    private messagesAdapter messagesAdapter;
+    private EditText editTextItem;
+    private ContactUser contactUser;
+    private messagesAdapter messsagesAdapter;
     private ArrayList<Message> arrayList;
     TextView userNameView;
     ListView messagesListView;
@@ -64,9 +66,9 @@ public class ChatActivity extends AppCompatActivity {
         arrayList = new ArrayList<>(dao.get(userName2, userName));
 
 
-        messagesAdapter = new messagesAdapter(getApplicationContext(), arrayList);
+     //   messagesAdapter = new messagesAdapter(getApplicationContext(), arrayList);
 
-        messagesListView.setAdapter(messagesAdapter);
+     //   messagesListView.setAdapter(messagesAdapter);
 
 
 

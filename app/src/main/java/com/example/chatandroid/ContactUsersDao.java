@@ -3,6 +3,7 @@ package com.example.chatandroid;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -19,6 +20,9 @@ public interface ContactUsersDao {
 
     @Insert
     void insert(ContactUser... users);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertUsers(List<ContactUser> users);
 
     @Update
     void update(ContactUser... users);
