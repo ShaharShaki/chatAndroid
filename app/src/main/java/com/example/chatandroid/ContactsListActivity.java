@@ -9,9 +9,11 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import com.example.chatandroid.api.UserAPI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ContactsListActivity extends AppCompatActivity {
     private contactDB db;
@@ -28,8 +30,15 @@ public class ContactsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactslist);
 
+
         db = Room.databaseBuilder(getApplicationContext(), contactDB.class, "contactsDB").allowMainThreadQueries().build();
         dao = db.contactUsersDao();
+
+        UserAPI userAPI = new UserAPI(dao);
+        userAPI.get();
+        dao.update();
+
+//        List<ContactUser> list = dao.get("Erel");
 
         tempList.add(new ContactUser("Ido", "Ido2", "2222", "asdasd", "20:00"));
         tempList.get(0).setCurrentUserLogin("Shahar");

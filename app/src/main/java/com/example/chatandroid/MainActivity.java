@@ -19,14 +19,16 @@ public class MainActivity extends AppCompatActivity {
 
     static List<String> usernamesList;
     static List<String> passwordsList;
+    private ContactUsersDao dao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UserAPI userAPI = new UserAPI();
-        userAPI.get();
+
+        // dao.update();
 
         usernamesList = new ArrayList<String>();
         passwordsList = new ArrayList<String>();
@@ -35,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         String password = findViewById(R.id.editTextTextPassword).toString();
+        if (!password.isEmpty() && !username.toString().isEmpty()) {
+            UserAPI userAPI = new UserAPI(dao);
+            userAPI.validateLogin(username.toString(), password);
+        }
 
         Button btnLogin = findViewById(R.id.btnLogin);
 
