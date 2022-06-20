@@ -6,6 +6,11 @@ import com.example.chatandroid.ContactUsersDao;
 import com.example.chatandroid.MyApplication;
 import com.example.chatandroid.R;
 
+import com.example.chatandroid.Message;
+import com.example.chatandroid.messagesDao;
+
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +24,7 @@ public class UserAPI {
     Retrofit retrofit;
     WebAPI webServiceAPI;
     ContactUsersDao dao;
+    messagesDao daoMsg;
 
     public UserAPI(ContactUsersDao dao) {
         this.dao = dao;
@@ -62,9 +68,45 @@ public class UserAPI {
         });
     }
 
+
+    public void getMessages(String username) {
+
+        Call<List<Message>> call = webServiceAPI.getMessagess("Erel", "test");
+        //  Call<List<ContactUser>> call = webServiceAPI.getPosts();
+
+        call.enqueue(new Callback<List<Message>>() {
+            @Override
+            public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
+                List<Message> list = response.body();
+                List<Message> tempList = new ArrayList<>();
+                tempList = daoMsg.index();
+                boolean shouldAddNewUser = true;
+                for (int i=0;i<list.size();i++){
+                    shouldAddNewUser = true;
+                    list.get(i).setCurrentUserLogin(username);
+                    for (int j=0; j< tempList.size();j++ ) {
+                        if (list.get(i).getName().equals(tempList.get(j).getName()))
+                            shouldAddNewUser = false;
+                    }
+                    if (shouldAddNewUser)
+                        daoMsg.insert(list.get(i));
+                    daoMsg.update();
+                }
+                //   dao.insertUsers(list);
+                //    dao.update();
+                System.out.println(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Message>> call, Throwable t) {
+            }
+        });
+    }
+
+
     public void validateLogin(String username, String password) {
         ContactUser user = new ContactUser(username,password);
-        Call<String> call = webServiceAPI.checkLogin(user);
+        Call<String> call = webServiceAPI.checkLogin(username,password);
         //  Call<List<ContactUser>> call = webServiceAPI.getPosts();
 
         call.enqueue(new Callback<String>() {

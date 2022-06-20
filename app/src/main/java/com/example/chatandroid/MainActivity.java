@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener(v -> {
             if (!password.toString().isEmpty() && !username.toString().isEmpty()) {
-            //    UserAPI userAPI = new UserAPI(dao);
-             //   userAPI.validateLogin(username.getText().toString(), password.getText().toString());
+                UserAPI userAPI = new UserAPI(dao);
+                userAPI.validateLogin(username.getText().toString(), password.getText().toString());
                 Intent in = new Intent(this, ContactsListActivity.class);
                 in.putExtra("username", username.getText().toString());
                 startActivity(in);

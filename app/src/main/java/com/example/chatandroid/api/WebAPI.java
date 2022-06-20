@@ -19,12 +19,18 @@ public interface WebAPI {
     Call<List<ContactUser>> getContacts(@Query("id") String username);
     //Call<List<ContactUser>> getPosts();
 
+    @GET("contacts/{id}/messages")
+    Call<List<ContactUser>> getMessagess(@Query("currentId") String username,
+                                        @Path("id") String id);
+    //Call<List<ContactUser>> getPosts();
+
+
     @Headers("content-type: application/json")
     @POST("login/{id}/{password}")
     Call<String> checkLogin
-            //(@Query("id") String username,
-              //            @Query("password") String password);
-    (@Body ContactUser user);
+            (@Path("id") String username,
+                         @Path("password") String password);
+   // (@Body ContactUser user);
 
     @POST("posts")
     Call<Void> createPost(@Body ContactUser post);
