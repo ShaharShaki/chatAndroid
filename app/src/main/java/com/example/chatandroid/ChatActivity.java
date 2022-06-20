@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import com.example.chatandroid.api.UserAPI;
+
 import java.util.ArrayList;
 
 public class ChatActivity extends AppCompatActivity {
@@ -29,6 +31,9 @@ public class ChatActivity extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(), messagesDB.class, "messagesDB").allowMainThreadQueries().build();
         dao = db.messagesDao();
 
+        UserAPI userAPI = new UserAPI(dao);
+        userAPI.getMessages("test");
+        dao.update();
 
         userNameView = findViewById(R.id.user_name);
 
@@ -63,7 +68,7 @@ public class ChatActivity extends AppCompatActivity {
 
         messagesListView = findViewById(R.id.MessagesListView);
 
-        arrayList = new ArrayList<>(dao.get(userName2, userName));
+        arrayList = new ArrayList<>(dao.get(userName, userName2));
 
         messsagesAdapter = new messagesAdapter(getApplicationContext(), arrayList);
 

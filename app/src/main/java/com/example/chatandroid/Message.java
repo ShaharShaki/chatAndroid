@@ -15,7 +15,7 @@ public class Message {
 
     public Message(){}
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     private int id;
     private String firstUser;
     private String secondUser;

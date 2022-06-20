@@ -93,7 +93,7 @@ public class ContactsListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
 
-                intent.putExtra("username", contactsList.get(i).getName());
+                intent.putExtra("username", contactsList.get(i).getId());
                 intent.putExtra("username2", contactsList.get(i).getCurrentUserLogin());
                 intent.putExtra("lastMessage", contactsList.get(i).getLast());
                 intent.putExtra("time", contactsList.get(i).getLastdate());

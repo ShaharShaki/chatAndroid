@@ -35,6 +35,15 @@ public class UserAPI {
         webServiceAPI = retrofit.create(WebAPI.class);
     }
 
+    public UserAPI(messagesDao dao) {
+        this.daoMsg = dao;
+        retrofit = new Retrofit.Builder()
+                .baseUrl(MyApplication.context.getString(R.string.BaseUrl))
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        webServiceAPI = retrofit.create(WebAPI.class);
+    }
+
     public void get(String username) {
         Call<List<ContactUser>> call = webServiceAPI.getContacts(username);
       //  Call<List<ContactUser>> call = webServiceAPI.getPosts();
@@ -71,7 +80,7 @@ public class UserAPI {
 
     public void getMessages(String username) {
 
-        Call<List<Message>> call = webServiceAPI.getMessagess("Erel", "test");
+        Call<List<Message>> call = webServiceAPI.getMessagess("Erel","Liron");
         //  Call<List<ContactUser>> call = webServiceAPI.getPosts();
 
         call.enqueue(new Callback<List<Message>>() {
@@ -79,16 +88,19 @@ public class UserAPI {
             public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
                 List<Message> list = response.body();
                 List<Message> tempList = new ArrayList<>();
-                tempList = daoMsg.index();
-                boolean shouldAddNewUser = true;
+                tempList = daoMsg.get("Liron", "Erel");
+                boolean shouldAddMessage = true;
                 for (int i=0;i<list.size();i++){
-                    shouldAddNewUser = true;
-                    list.get(i).setCurrentUserLogin(username);
+                    shouldAddMessage = true;
+                  //  list.get(i).setCurrentUserLogin(username);
+                    list.get(i).setFirstUser("liron");
+                    list.get(i).setSecondUser("Erel");
                     for (int j=0; j< tempList.size();j++ ) {
-                        if (list.get(i).getName().equals(tempList.get(j).getName()))
-                            shouldAddNewUser = false;
+                        if (list.get(i).getCreated().equals(tempList.get(j).getCreated()) &&
+                        list.get(i).getContent().equals(tempList.get(j).getContent()))
+                        shouldAddMessage = false;
                     }
-                    if (shouldAddNewUser)
+                    if (shouldAddMessage)
                         daoMsg.insert(list.get(i));
                     daoMsg.update();
                 }

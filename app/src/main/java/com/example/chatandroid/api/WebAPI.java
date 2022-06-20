@@ -1,6 +1,7 @@
 package com.example.chatandroid.api;
 
 import com.example.chatandroid.ContactUser;
+import com.example.chatandroid.Message;
 
 import java.util.List;
 
@@ -20,8 +21,9 @@ public interface WebAPI {
     //Call<List<ContactUser>> getPosts();
 
     @GET("contacts/{id}/messages")
-    Call<List<ContactUser>> getMessagess(@Query("currentId") String username,
-                                        @Path("id") String id);
+    Call<List<Message>> getMessagess(@Path("id") String id,
+                                @Query("currentId") String username);
+                                //     @Path("id") String id);
     //Call<List<ContactUser>> getPosts();
 
 
