@@ -14,7 +14,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private messagesDB db;
     private messagesDao dao;
-    private EditText editTextItem;
+   // private EditText editTextItem;
     private ContactUser contactUser;
     private messagesAdapter messsagesAdapter;
     private ArrayList<Message> arrayList;
@@ -40,10 +40,10 @@ public class ChatActivity extends AppCompatActivity {
         userNameView.setText(userName);
 
 
-        Message message1 = new Message("Shahar", "Ido2", "HEY");
-        Message message2 = new Message("Shahar", "Ido2", "HEY2");
-        Message message3 = new Message("Shahar", "Ido2", "HEY3");
-        Message message4 = new Message("Shahar", "Ido", "HEY3");
+        Message message1 = new Message("Shahar", "Ido2", "HEY","test",true);
+        Message message2 = new Message("Shahar", "Ido2", "HEY2","test",true);
+        Message message3 = new Message("Shahar", "Ido2", "HEY3","test",true);
+        Message message4 = new Message("Shahar", "Ido", "HEY3","test",true);
 
         ArrayList<Message> arrayListTemp = new ArrayList<>();
         arrayListTemp.add(message1);

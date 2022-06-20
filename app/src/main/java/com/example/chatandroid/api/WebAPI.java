@@ -20,9 +20,11 @@ public interface WebAPI {
     //Call<List<ContactUser>> getPosts();
 
     @Headers("content-type: application/json")
-    @POST("login")
-    Call<String> checkLogin(@Query("id") String username,
-                          @Query("password") String password);
+    @POST("login/{id}/{password}")
+    Call<String> checkLogin
+            //(@Query("id") String username,
+              //            @Query("password") String password);
+    (@Body ContactUser user);
 
     @POST("posts")
     Call<Void> createPost(@Body ContactUser post);

@@ -6,6 +6,7 @@ import com.example.chatandroid.ContactUsersDao;
 import com.example.chatandroid.MyApplication;
 import com.example.chatandroid.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,17 +29,27 @@ public class UserAPI {
         webServiceAPI = retrofit.create(WebAPI.class);
     }
 
-    public void get() {
-        Call<List<ContactUser>> call = webServiceAPI.getContacts("Erel");
+    public void get(String username) {
+        Call<List<ContactUser>> call = webServiceAPI.getContacts(username);
       //  Call<List<ContactUser>> call = webServiceAPI.getPosts();
 
         call.enqueue(new Callback<List<ContactUser>>() {
             @Override
             public void onResponse(Call<List<ContactUser>> call, Response<List<ContactUser>> response) {
                 List<ContactUser> list = response.body();
+                List<ContactUser> tempList = new ArrayList<>();
+                tempList = dao.index();
+                boolean shouldAddNewUser = true;
                 for (int i=0;i<list.size();i++){
-                    list.get(i).setCurrentUserLogin("Erel");
-                    dao.insert(list.get(i));
+                    shouldAddNewUser = true;
+                    list.get(i).setCurrentUserLogin(username);
+                    for (int j=0; j< tempList.size();j++ ) {
+                        if (list.get(i).getName().equals(tempList.get(j).getName()))
+                            shouldAddNewUser = false;
+                    }
+                    if (shouldAddNewUser)
+                        dao.insert(list.get(i));
+                        dao.update();
                 }
              //   dao.insertUsers(list);
             //    dao.update();
@@ -52,7 +63,8 @@ public class UserAPI {
     }
 
     public void validateLogin(String username, String password) {
-        Call<String> call = webServiceAPI.checkLogin(username,password);
+        ContactUser user = new ContactUser(username,password);
+        Call<String> call = webServiceAPI.checkLogin(user);
         //  Call<List<ContactUser>> call = webServiceAPI.getPosts();
 
         call.enqueue(new Callback<String>() {

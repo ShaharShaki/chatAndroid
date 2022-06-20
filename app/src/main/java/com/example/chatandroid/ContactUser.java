@@ -14,6 +14,20 @@ public class ContactUser {
     private String server;
     private String last;
     private String lastdate;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public ContactUser(@NonNull String id, String password) {
+        this.id = id;
+        this.password = password;
+    }
 
     public String getCurrentUserLogin() {
         return currentUserLogin;

@@ -34,11 +34,14 @@ public class ContactsListActivity extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(), contactDB.class, "contactsDB").allowMainThreadQueries().build();
         dao = db.contactUsersDao();
 
+        Intent activityIntent = getIntent();
+        String userName = activityIntent.getStringExtra("username");
+
         UserAPI userAPI = new UserAPI(dao);
-        userAPI.get();
+        userAPI.get(userName);
         dao.update();
 
-//        List<ContactUser> list = dao.get("Erel");
+        List<ContactUser> list = dao.get("Erel");
 
         tempList.add(new ContactUser("Ido", "Ido2", "2222", "asdasd", "20:00"));
         tempList.get(0).setCurrentUserLogin("Shahar");

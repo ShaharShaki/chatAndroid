@@ -34,20 +34,27 @@ public class MainActivity extends AppCompatActivity {
         passwordsList = new ArrayList<String>();
 
         EditText username = findViewById(R.id.editTextTextPersonName);
+        EditText password = findViewById(R.id.editTextTextPassword);
 
 
-        String password = findViewById(R.id.editTextTextPassword).toString();
-        if (!password.isEmpty() && !username.toString().isEmpty()) {
-            UserAPI userAPI = new UserAPI(dao);
-            userAPI.validateLogin(username.toString(), password);
+        if (!password.toString().isEmpty() && !username.toString().isEmpty()) {
+        //    UserAPI userAPI = new UserAPI(dao);
+         //   userAPI.validateLogin(username.getText().toString(), password);
         }
 
         Button btnLogin = findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(v -> {
-            Intent in = new Intent(this, ContactsListActivity.class);
-                    in.putExtra("username", username.getText().toString());
-                    startActivity(in);
+            if (!password.toString().isEmpty() && !username.toString().isEmpty()) {
+            //    UserAPI userAPI = new UserAPI(dao);
+             //   userAPI.validateLogin(username.getText().toString(), password.getText().toString());
+                Intent in = new Intent(this, ContactsListActivity.class);
+                in.putExtra("username", username.getText().toString());
+                startActivity(in);
+            }
+            //Intent in = new Intent(this, ContactsListActivity.class);
+            //        in.putExtra("username", username.getText().toString());
+            //        startActivity(in);
         });
 
         Button btnRegister = findViewById(R.id.btnRegister);

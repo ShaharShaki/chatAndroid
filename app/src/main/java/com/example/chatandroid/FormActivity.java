@@ -25,7 +25,13 @@ public class FormActivity extends AppCompatActivity {
 
         contactUsersDao = db.contactUsersDao();
 
-        editTextItem = findViewById(R.id.editTextItem);
+
+
+//        editTextItem = findViewById(R.id.editTextItem);
+        String name = findViewById(R.id.editTextItem).toString();
+        String nickname = findViewById(R.id.editTextNickname).toString();
+        String server = findViewById(R.id.editServer).toString();
+
 
         if (getIntent().getExtras() != null) {
             String id = getIntent().getExtras().getString("id");
@@ -41,7 +47,7 @@ public class FormActivity extends AppCompatActivity {
             }
             else {
              //   ContactUser contactUser = new ContactUser(0, editTextItem.getText().toString());
-                contactUsersDao.insert(contactUser);
+             //   contactUsersDao.insert(contactUser);
             }
 
             finish();
