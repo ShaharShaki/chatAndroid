@@ -31,9 +31,7 @@ public class ChatActivity extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(), messagesDB.class, "messagesDB").allowMainThreadQueries().build();
         dao = db.messagesDao();
 
-        UserAPI userAPI = new UserAPI(dao);
-        userAPI.getMessages("test");
-        dao.update();
+
 
         userNameView = findViewById(R.id.user_name);
 
@@ -44,11 +42,16 @@ public class ChatActivity extends AppCompatActivity {
 
         userNameView.setText(userName);
 
+        UserAPI userAPI = new UserAPI(dao);
+        userAPI.getMessages(userName2,userName);
+        dao.update();
 
-        Message message1 = new Message("Shahar", "Ido2", "HEY","test",true);
+
+     //   Message message1 = new Message("Shahar", "Ido2", "HEY","test",true);
         Message message2 = new Message("Shahar", "Ido2", "HEY2","test",true);
         Message message3 = new Message("Shahar", "Ido2", "HEY3","test",true);
         Message message4 = new Message("Shahar", "Ido", "HEY3","test",true);
+        Message message1 = new Message("Ido2", "Shahar", "HEY","test",true);
 
         ArrayList<Message> arrayListTemp = new ArrayList<>();
         arrayListTemp.add(message1);
@@ -74,25 +77,11 @@ public class ChatActivity extends AppCompatActivity {
 
         messagesListView.setAdapter(messsagesAdapter);
 
-
-
-
-
-
-//        db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "UsersDB")
-//                .allowMainThreadQueries()
-//                .build();
-//
-//        contactUsersDao = db.contactUsersDao();
-//
-//        editTextItem = findViewById(R.id.editTextItem);
-//
-//
-//        if (getIntent().getExtras() != null) {
-//            int id = getIntent().getExtras().getInt("id");
-//            contactUser = contactUsersDao.get(id);
-//            editTextItem.setText(contactUser.getContent());
-//        }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        messsagesAdapter.notifyDataSetChanged();
+    }
 }

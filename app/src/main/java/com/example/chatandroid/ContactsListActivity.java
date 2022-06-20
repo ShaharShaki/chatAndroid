@@ -21,8 +21,8 @@ public class ContactsListActivity extends AppCompatActivity {
     private ListView myContactsListView;
     private ArrayList<ContactUser> tempList = new ArrayList<>();
     private ContactUsersDao dao;
-
-
+    private ArrayList<ContactUser> contactsList;
+    private String username1;
 
 
     @Override
@@ -33,13 +33,14 @@ public class ContactsListActivity extends AppCompatActivity {
 
         db = Room.databaseBuilder(getApplicationContext(), contactDB.class, "contactsDB").allowMainThreadQueries().build();
         dao = db.contactUsersDao();
+        //  dao.update();
 
         Intent activityIntent = getIntent();
         String userName = activityIntent.getStringExtra("username");
 
         UserAPI userAPI = new UserAPI(dao);
         userAPI.get(userName);
-        dao.update();
+     //   dao.update();
 
         List<ContactUser> list = dao.get("Erel");
 
@@ -67,11 +68,15 @@ public class ContactsListActivity extends AppCompatActivity {
         Intent intent1 = getIntent();
         String username1 = intent1.getStringExtra("username");
 
-        ArrayList<ContactUser> contactsList = new ArrayList<>(dao.get(username1));
+       // ArrayList<ContactUser> contactsList = new ArrayList<>(dao.get(username1));
+        contactsList = new ArrayList<>(dao.get(username1));
 
         FloatingActionButton BtnAdd = findViewById(R.id.BtnAdd);
         BtnAdd.setOnClickListener(v -> {
+
             Intent in = new Intent(this, FormActivity.class);
+            in.putExtra("currentUser", username1);
+
             startActivity(in);
         });
 
@@ -80,13 +85,6 @@ public class ContactsListActivity extends AppCompatActivity {
         adapter = new ContactsListAdapter(getApplicationContext(), contactsList);
 
         myContactsListView.setAdapter(adapter);
-
-//        myContactsListView.setOnItemLongClickListener((adapterView, view, i, l) -> {
-////            ContactUser contactUser = tempList.remove(i);
-////            contactUsersDao.delete(contactUser);
-////            adapter.notifyDataSetChanged();
-////            return true;
-////        });
 
         myContactsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -97,6 +95,7 @@ public class ContactsListActivity extends AppCompatActivity {
                 intent.putExtra("username2", contactsList.get(i).getCurrentUserLogin());
                 intent.putExtra("lastMessage", contactsList.get(i).getLast());
                 intent.putExtra("time", contactsList.get(i).getLastdate());
+                dao.update();
 
                 startActivity(intent);
 
@@ -105,24 +104,22 @@ public class ContactsListActivity extends AppCompatActivity {
             }
         });
 
-
-//
-//        myContactsListView.setOnItemClickListener((adapterView, view, i, l) ->{
-//            String username = contactUsers.get(i).getName();
-//            Intent intent = new Intent(this, ChatActivity.class);
-//            intent.putExtra("username",username);
-//            startActivity(intent);
-//        });
-
     }
 
-//    @Override
-//    protected void onResume()
-//    {
-//        super.onResume();
-//        contactUsers.clear();
-//        adapter.set
-//        contactUsers.addAll(dao.get());
-//        adapter.notifyDataSetChanged();
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent1 = getIntent();
+        String username1 = intent1.getStringExtra("username");
+        contactsList.clear();
+        contactsList.addAll(dao.get(username1));
+        adapter.notifyDataSetChanged();
+        /*
+        contactsList = new ArrayList<>(dao.get(username1));
+        adapter = new ContactsListAdapter(getApplicationContext(), contactsList);
+
+        myContactsListView.setAdapter(adapter);
+         */
+
+    }
 }

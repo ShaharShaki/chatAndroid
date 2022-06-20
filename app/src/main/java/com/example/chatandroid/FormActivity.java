@@ -1,5 +1,6 @@
 package com.example.chatandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -7,12 +8,14 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import com.example.chatandroid.api.UserAPI;
+
 public class FormActivity extends AppCompatActivity {
 
     private contactDB db;
     private ContactUsersDao contactUsersDao;
     private EditText editTextItem;
-    private ContactUser contactUser;
+ //   private ContactUser contactUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,25 +28,38 @@ public class FormActivity extends AppCompatActivity {
 
         contactUsersDao = db.contactUsersDao();
 
+        Intent intent1 = getIntent();
+        String currentUser = intent1.getStringExtra("currentUser");
 
 
-//        editTextItem = findViewById(R.id.editTextItem);
-        String name = findViewById(R.id.editTextItem).toString();
-        String nickname = findViewById(R.id.editTextNickname).toString();
-        String server = findViewById(R.id.editServer).toString();
 
-
+        //???
+        /*
         if (getIntent().getExtras() != null) {
             String id = getIntent().getExtras().getString("id");
 //            contactUser = contactUsersDao.get();
           //  editTextItem.setText(contactUser.getContent());
         }
-
+*/      ContactUser user = new ContactUser();
         Button btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(v -> {
-            if(contactUser != null) {
+            EditText nickname = findViewById(R.id.editTextNickname);
+            EditText server = findViewById(R.id.editServer);
+            EditText name = findViewById(R.id.editTextItem);
+            user.setName(nickname.getText().toString());
+            user.setId(name.getText().toString());
+            user.setServer(server.getText().toString());
+            if(user != null) {
             //    contactUser.setContent(editTextItem.getText().toString());
-                contactUsersDao.update(contactUser);
+                user.setCurrentUserLogin(currentUser);
+
+                UserAPI userAPI = new UserAPI(contactUsersDao);
+                userAPI.postContact(user,currentUser);
+              //  contactUsersDao.update(user);
+
+                contactUsersDao.insert(user);
+
+                //contactUsersDao.update();
             }
             else {
              //   ContactUser contactUser = new ContactUser(0, editTextItem.getText().toString());

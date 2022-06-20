@@ -34,8 +34,9 @@ public interface WebAPI {
                          @Path("password") String password);
    // (@Body ContactUser user);
 
-    @POST("posts")
-    Call<Void> createPost(@Body ContactUser post);
+    @POST("contacts")
+    Call<Void> createContact(@Body ContactUser user,
+                             @Query("currentId") String username);
 
     @DELETE("posts/{id}")
     Call<Void> deletePost(@Path("id") int id);
