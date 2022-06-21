@@ -36,7 +36,7 @@ public class messagesAdapter extends ArrayAdapter<Message> {
 
         //todo need to get picture of user
 //        imageView.setImageResource(contactUser.);
-        username.setText(message.getMessage());
+        username.setText(message.getContent());
         return convertView;
 
     }

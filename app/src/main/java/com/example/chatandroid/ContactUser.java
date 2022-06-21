@@ -11,9 +11,26 @@ public class ContactUser {
     @NonNull
     private String id;
     private String name;
+
+
+
     private String server;
     private String last;
     private String lastdate;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public ContactUser(@NonNull String id, String password) {
+        this.id = id;
+        this.password = password;
+    }
 
     public String getCurrentUserLogin() {
         return currentUserLogin;
@@ -25,6 +42,13 @@ public class ContactUser {
 
     @NonNull
     private String currentUserLogin;
+
+
+    public ContactUser(@NonNull String id, String name, String password) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+    }
 
 
     public ContactUser(String id, String name, String server, String last, String lastdate) {

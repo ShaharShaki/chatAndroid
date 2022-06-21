@@ -15,5 +15,12 @@
     <string name="BaseUrl">"http://10.0.2.2:7061/ "</string>
     <string name="textViewName">" "</string>
     <string name="welcome">Welcome!</string>
+    <string name="username">UserName</string>
+    <string name="nickname">NickName</string>
+    <string name="server">Server</string>
+    <string name="settings_logo">Settings</string>
+    <string name="server_ad">Server address</string>
+    <string name="messageHint">Type your Message..</string>
+
 
 </resources>

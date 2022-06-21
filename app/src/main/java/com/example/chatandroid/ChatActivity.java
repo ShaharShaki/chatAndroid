@@ -2,11 +2,14 @@ package com.example.chatandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
+
+import com.example.chatandroid.api.UserAPI;
 
 import java.util.ArrayList;
 
@@ -14,7 +17,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private messagesDB db;
     private messagesDao dao;
-    private EditText editTextItem;
+   // private EditText editTextItem;
     private ContactUser contactUser;
     private messagesAdapter messsagesAdapter;
     private ArrayList<Message> arrayList;
@@ -30,6 +33,7 @@ public class ChatActivity extends AppCompatActivity {
         dao = db.messagesDao();
 
 
+
         userNameView = findViewById(R.id.user_name);
 
         Intent activityIntent = getIntent();
@@ -39,11 +43,18 @@ public class ChatActivity extends AppCompatActivity {
 
         userNameView.setText(userName);
 
+        UserAPI userAPI = new UserAPI(dao);
+        userAPI.getMessages(userName2,userName);
+        dao.update();
 
-        Message message1 = new Message("Shahar", "Ido2", "HEY");
-        Message message2 = new Message("Shahar", "Ido2", "HEY2");
-        Message message3 = new Message("Shahar", "Ido2", "HEY3");
-        Message message4 = new Message("Shahar", "Ido", "HEY3");
+       // EditText content = findViewById(R.id.sendMessage);
+      //  content.getText().toString();
+
+     //   Message message1 = new Message("Shahar", "Ido2", "HEY","test",true);
+        Message message2 = new Message("Shahar", "Ido2", "HEY2","test",true);
+        Message message3 = new Message("Shahar", "Ido2", "HEY3","test",true);
+        Message message4 = new Message("Shahar", "Ido", "HEY3","test",true);
+        Message message1 = new Message("Ido2", "Shahar", "HEY","test",true);
 
         ArrayList<Message> arrayListTemp = new ArrayList<>();
         arrayListTemp.add(message1);
@@ -63,32 +74,17 @@ public class ChatActivity extends AppCompatActivity {
 
         messagesListView = findViewById(R.id.MessagesListView);
 
-        arrayList = new ArrayList<>(dao.get(userName2, userName));
+        arrayList = new ArrayList<>(dao.get(userName, userName2));
 
+        messsagesAdapter = new messagesAdapter(getApplicationContext(), arrayList);
 
-     //   messagesAdapter = new messagesAdapter(getApplicationContext(), arrayList);
+        messagesListView.setAdapter(messsagesAdapter);
 
-     //   messagesListView.setAdapter(messagesAdapter);
-
-
-
-
-
-
-//        db = Room.databaseBuilder(getApplicationContext(), AppDB.class, "UsersDB")
-//                .allowMainThreadQueries()
-//                .build();
-//
-//        contactUsersDao = db.contactUsersDao();
-//
-//        editTextItem = findViewById(R.id.editTextItem);
-//
-//
-//        if (getIntent().getExtras() != null) {
-//            int id = getIntent().getExtras().getInt("id");
-//            contactUser = contactUsersDao.get(id);
-//            editTextItem.setText(contactUser.getContent());
-//        }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        messsagesAdapter.notifyDataSetChanged();
+    }
 }

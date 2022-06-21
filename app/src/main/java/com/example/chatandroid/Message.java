@@ -15,18 +15,39 @@ public class Message {
 
     public Message(){}
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     private int id;
     private String firstUser;
     private String secondUser;
-    private String message;
+    private String content;
+    private String created;
+    private boolean sent;
 
 
-    public Message(String firstUser1, String secondUser1, String message1) {
+    public Message(String firstUser1, String secondUser1, String message1, String created1, boolean sent1) {
         firstUser = firstUser1;
         secondUser = secondUser1;
-        message = message1;
+        content = message1;
+        created = created1;
+        sent = sent1;
     }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public boolean isSent() {
+        return sent;
+    }
+
+    public void setSent(boolean sent) {
+        this.sent = sent;
+    }
+
 
     public String getFirstUser() {
         return firstUser;
@@ -44,11 +65,11 @@ public class Message {
         this.secondUser = secondUser;
     }
 
-    public String getMessage() {
-        return message;
+    public String getContent() {
+        return content;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setContent(String content) {
+        this.content = content;
     }
 }
