@@ -64,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button btnSettings = findViewById(R.id.btnSettings);
+        btnSettings.setOnClickListener(v -> {
+            Intent iSet = new Intent(this, SettingsActivity.class);
+            startActivity(iSet);
+        });
+
 
 
     }

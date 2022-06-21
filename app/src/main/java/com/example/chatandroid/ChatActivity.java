@@ -2,6 +2,7 @@ package com.example.chatandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -46,6 +47,8 @@ public class ChatActivity extends AppCompatActivity {
         userAPI.getMessages(userName2,userName);
         dao.update();
 
+       // EditText content = findViewById(R.id.sendMessage);
+      //  content.getText().toString();
 
      //   Message message1 = new Message("Shahar", "Ido2", "HEY","test",true);
         Message message2 = new Message("Shahar", "Ido2", "HEY2","test",true);

@@ -61,12 +61,13 @@ public class FormActivity extends AppCompatActivity {
 
                 //contactUsersDao.update();
             }
-            else {
+           // else {
              //   ContactUser contactUser = new ContactUser(0, editTextItem.getText().toString());
              //   contactUsersDao.insert(contactUser);
-            }
-
+           // }
             finish();
+//            Intent i4 = new Intent(this, ContactsListActivity.class);
+//            startActivity(i4);
         });
     }
 }

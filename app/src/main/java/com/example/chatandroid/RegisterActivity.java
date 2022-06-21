@@ -13,11 +13,16 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import com.example.chatandroid.api.UserAPI;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private final int GALLERY_REQ_CODE = 1000;
     ImageView imgGallery;
+    private ContactUsersDao dao;
+    private contactDB db;
 
 
     @Override
@@ -25,11 +30,18 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        EditText username = findViewById(R.id.editTextTextPersonName);
-        EditText password = findViewById(R.id.editTextTextPassword);
-        EditText password2 = findViewById(R.id.registerPasswordValidation);
+        db = Room.databaseBuilder(getApplicationContext(), contactDB.class, "UsersDB")
+                .allowMainThreadQueries()
+                .build();
 
-        ImageView imgGallery = findViewById(R.id.imgGallery);
+        dao = db.contactUsersDao();
+
+//        EditText username = findViewById(R.id.editTextTextPersonName);
+//        EditText nickname = findViewById(R.id.editTextTextPersonNickname);
+//        EditText password = findViewById(R.id.editTextTextPassword);
+//        EditText password2 = findViewById(R.id.registerPasswordValidation);
+
+//        ImageView imgGallery = findViewById(R.id.imgGallery);
         Button btnGallery = findViewById(R.id.btnImg);
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,18 +51,30 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+
         Button Submit = findViewById(R.id.btnSubmit);
         Submit.setOnClickListener(v -> {
-            if ((password.getText().toString().equals(password2.getText().toString())) &&
-                    !(MainActivity.usernamesList.contains(username.getText().toString()))) {
-                MainActivity.usernamesList.add(username.getText().toString());
-                MainActivity.usernamesList.add(password.getText().toString());
+//            if ((password.getText().toString().equals(password2.getText().toString())) &&
+//                    !(MainActivity.usernamesList.contains(username.getText().toString()))) {
+                EditText username = findViewById(R.id.editTextTextPersonUsername);
+                EditText nickname = findViewById(R.id.editTextTextPersonNickname);
+                EditText password = findViewById(R.id.registerPassword);
+                if (nickname.getText().toString()!= null) {
+                    ContactUser user = new ContactUser(username.getText().toString(),nickname.getText().toString(),password.getText().toString());
+                    UserAPI userAPI = new UserAPI(dao);
+                    userAPI.registerUser(username.getText().toString(), nickname.getText().toString(), password.getText().toString());
+                    user.setCurrentUserLogin(username.getText().toString());
+                    dao.insert(user);
+                 //   MainActivity.usernamesList.add(username.getText().toString());
+                 //   MainActivity.usernamesList.add(password.getText().toString());
+                }
                 Intent i2 = new Intent(this, MainActivity.class);
                 startActivity(i2);
-            } else {
-                popupMessage();
-//                onCreate(savedInstanceState);
-            }
+               // finish();
+//            } else {
+//                popupMessage();
+////                onCreate(savedInstanceState);
+//            }
 
         });
 

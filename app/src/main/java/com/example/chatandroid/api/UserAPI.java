@@ -157,4 +157,24 @@ public class UserAPI {
     }
 
 
+    public void registerUser(String id,String name, String password) {
+        //ContactUser user = new ContactUser(id,name,password);
+        //user.setCurrentUserLogin(id);
+        Call<String> call = webServiceAPI.regiUser(id,name,password);
+        //  Call<List<ContactUser>> call = webServiceAPI.getPosts();
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                response.body();
+                System.out.println(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+            }
+        });
+    }
+
+
 }

@@ -27,12 +27,17 @@ public interface WebAPI {
     //Call<List<ContactUser>> getPosts();
 
 
-    @Headers("content-type: application/json")
+//    @Headers("content-type: application/json")
+    @POST("register/{id}/{name}/{password}")
+    Call<String> regiUser
+            (@Path("id") String id,
+             @Path("name") String name,
+             @Path("password") String password);
+
     @POST("login/{id}/{password}")
     Call<String> checkLogin
             (@Path("id") String username,
-                         @Path("password") String password);
-   // (@Body ContactUser user);
+             @Path("password") String password);
 
     @POST("contacts")
     Call<Void> createContact(@Body ContactUser user,
