@@ -21,6 +21,8 @@
     <string name="settings_logo">Settings</string>
     <string name="server_ad">Server address</string>
     <string name="messageHint">Type your Message..</string>
+    <string name="BtnSend">Send</string>
+
 
 
 </resources>
