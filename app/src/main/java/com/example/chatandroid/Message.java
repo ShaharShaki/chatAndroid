@@ -1,9 +1,10 @@
 package com.example.chatandroid;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity (primaryKeys = {"id", "firstUser"})
 public class Message {
     public int getId() {
         return id;
@@ -15,8 +16,9 @@ public class Message {
 
     public Message(){}
 
-    @PrimaryKey(autoGenerate = false)
+    @NonNull
     private int id;
+    @NonNull
     private String firstUser;
     private String secondUser;
     private String content;

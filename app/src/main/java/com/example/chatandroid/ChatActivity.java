@@ -86,9 +86,24 @@ public class ChatActivity extends AppCompatActivity {
         Send.setOnClickListener(v -> {
             EditText content = findViewById(R.id.newMessage);
             String contentValue = content.getText().toString();
+            m.setContent(contentValue);
             if(m != null) {
+                m.setFirstUser(userName2);
+                m.setSecondUser(userName);
+//                UserAPI userAPI = new UserAPI(dao);
+                userAPI.newMessage(userName2,userName,m);
+                dao.insert(m);
+                messagesListView = findViewById(R.id.MessagesListView);
+
+                arrayList = new ArrayList<>(dao.get(userName, userName2));
+
+                messsagesAdapter = new messagesAdapter(getApplicationContext(), arrayList);
+
+                messagesListView.setAdapter(messsagesAdapter);
+
                 //    contactUser.setContent(editTextItem.getText().toString());
             }
+            finish();
         });
     }
 
