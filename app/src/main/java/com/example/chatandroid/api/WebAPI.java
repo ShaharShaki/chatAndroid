@@ -43,6 +43,11 @@ public interface WebAPI {
     Call<Void> createContact(@Body ContactUser user,
                              @Query("currentId") String username);
 
+
+    @POST("contacts/{id}/messages")
+    Call<Void> postMessage(@Body Message user,
+                           @Path("id") String id,
+                             @Query("currentId") String username);
     @DELETE("posts/{id}")
     Call<Void> deletePost(@Path("id") int id);
 }

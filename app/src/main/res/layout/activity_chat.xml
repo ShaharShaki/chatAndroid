@@ -6,40 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".ChatActivity">
 
+
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent">
 
+
+<!--        <TextView-->
+<!--            android:id="@+id/user_name"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:fontFamily="serif-monospace"-->
+<!--            android:text="Im small"-->
+<!--            android:textSize="36sp"-->
+<!--            tools:ignore="MissingConstraints" />-->
+
+
         <include layout="@layout/messageslayout">
 
         </include>
 
 
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="serif-monospace"
-            android:text="Im small"
-            android:textSize="36sp"
-            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/white"
+        tools:ignore="MissingConstraints">
 
         <EditText
-            android:id="@+id/editTextItem"
+            android:id="@+id/newMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/messageHint"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="parent" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Send" />
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

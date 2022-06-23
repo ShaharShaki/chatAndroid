@@ -20,7 +20,9 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.17481884057971014" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.13134057971014493" />
-        <entry key="app/src/main/res/layout/messageslayout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/contactslist.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/message.xml" value="0.20652173913043478" />
+        <entry key="app/src/main/res/layout/messageslayout.xml" value="0.22" />
       </map>
     </option>
   </component>

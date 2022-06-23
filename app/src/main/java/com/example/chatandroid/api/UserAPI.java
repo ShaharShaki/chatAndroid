@@ -177,4 +177,21 @@ public class UserAPI {
     }
 
 
+    public void newMessage(String currentUser, String contact, Message me) {
+
+        Call<Void> call = webServiceAPI.postMessage(me, currentUser,contact);
+        //  Call<List<ContactUser>> call = webServiceAPI.getPosts();
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                System.out.println(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+            }
+        });
+    }
+
 }

@@ -2,6 +2,7 @@ package com.example.chatandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,7 +28,7 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.messageslayout);
+        setContentView(R.layout.activity_chat);
 
         db = Room.databaseBuilder(getApplicationContext(), messagesDB.class, "messagesDB").allowMainThreadQueries().build();
         dao = db.messagesDao();
@@ -80,6 +81,30 @@ public class ChatActivity extends AppCompatActivity {
 
         messagesListView.setAdapter(messsagesAdapter);
 
+        Message m = new Message();
+        Button Send = findViewById(R.id.btnSend);
+        Send.setOnClickListener(v -> {
+            EditText content = findViewById(R.id.newMessage);
+            String contentValue = content.getText().toString();
+            m.setContent(contentValue);
+            if(m != null) {
+                m.setFirstUser(userName2);
+                m.setSecondUser(userName);
+//                UserAPI userAPI = new UserAPI(dao);
+                userAPI.newMessage(userName2,userName,m);
+                dao.insert(m);
+                messagesListView = findViewById(R.id.MessagesListView);
+
+                arrayList = new ArrayList<>(dao.get(userName, userName2));
+
+                messsagesAdapter = new messagesAdapter(getApplicationContext(), arrayList);
+
+                messagesListView.setAdapter(messsagesAdapter);
+
+                //    contactUser.setContent(editTextItem.getText().toString());
+            }
+            finish();
+        });
     }
 
     @Override
